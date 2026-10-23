@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rota Palantir</title>
+<meta name="description" content="O que é a Palantir, explicado de um jeito simples: os contratos com o Pentágono, o ICE e Israel, a guerra em Gaza, o papel das big techs, a ponte com Thiel, Vance e Trump, e o que ela fez no Brasil. Com fontes e o grau de prova de cada fato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: the Rotas skeleton in the easy-reading format. The Palantir route colour is a deep crimson, the glow of the seeing stone. Order: question, short answer, what the company does, origin, US military, Israel and Gaza, big techs, political bridge, Brazil, true or false, summary. */
+:root{
+  --bg:#f1f1f5; --paper:#fbfbfd; --ink:#1b1b24; --muted:#5b5b6b; --line:#d5d5e0; --soft:#e6e6ee;
+  --accent:#9f1239; --accent-soft:#fbe4ea;
+  --dist:#5b6b7a; --state:#7a3e8f; --eth:#3f7d3a; --fed:#b3261e;
+  --g-dilma:#c2185b; --g-temer:#4e5d6c; --g-bolso:#1d5fa8; --g-lula:#c62828;
+  --court:#8a6512; --court-soft:#f4ead2; --gray:#8a8c92;
+  --ok:#1f6b45; --ok-soft:#dcefe3; --no:#a12a2a; --no-soft:#f6dede; --part:#7a5a00; --part-soft:#f6ebc9; --open:#6b5bb5; --open-soft:#e8e5f6;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#fda4af; --accent-soft:#3b1520;
+  --dist:#9fb0c0; --state:#c99ad8; --eth:#8fcf88; --fed:#f08a82;
+  --g-dilma:#f48fb1; --g-temer:#a9b6c4; --g-bolso:#7fb2ec; --g-lula:#ef9a9a;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#fda4af; --accent-soft:#3b1520;
+  --dist:#9fb0c0; --state:#c99ad8; --eth:#8fcf88; --fed:#f08a82;
+  --g-dilma:#f48fb1; --g-temer:#a9b6c4; --g-bolso:#7fb2ec; --g-lula:#ef9a9a;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:19px;line-height:1.7}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+.kicker,.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kicker{color:var(--accent)}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h3{font-family:var(--ui);font-weight:700;font-size:22px;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+header,section{display:grid;grid-template-columns:minmax(0,1fr)}
+header{padding-block:40px 8px;gap:18px}
+section{padding-block:48px 8px;gap:18px}
+.lg{font-size:21px;line-height:1.6}
+.sub{color:var(--muted);max-width:62ch}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px;line-height:1.5}
+.src a{color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:12px;align-content:start}
+.answer-box{background:var(--accent-soft);border:2px solid var(--accent);border-radius:6px;padding:20px;margin-top:40px}
+.note{font-size:16px;color:var(--muted)}
+.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.rv-btn:hover{filter:brightness(1.08)}
+
+/* four ways */
+.path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+.stop{background:var(--paper);border:2px solid var(--accent);border-radius:8px;padding:14px 10px;display:grid;gap:6px;justify-items:center;text-align:center;align-content:start}
+.stop .emo{font-size:40px;line-height:1}
+.stop b{font-family:var(--ui);font-size:17px;line-height:1.2}
+.stop span{font-size:15px;color:var(--muted);line-height:1.4}
+.stop.court{border-color:var(--court);background:var(--court-soft)}
+.stop.court b{color:var(--court)}
+.who-decides{display:grid;grid-template-columns:1fr 3fr;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;text-align:center}
+.who-decides span{padding:6px;border-radius:4px}
+.who-decides .j{background:var(--court-soft);color:var(--court)}
+.who-decides .m{background:var(--accent-soft);color:var(--accent)}
+
+/* cases */
+.cases{display:grid;gap:12px}
+.case{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--c,var(--accent));border-radius:6px;padding:16px 18px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px}
+.case .when{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.4;padding-top:4px}
+.case .bd{display:grid;gap:6px}
+.case h3{font-size:21px}
+.case .who{font-family:var(--ui);font-size:15px;color:var(--muted);line-height:1.3}
+.case p{font-size:17px;line-height:1.55}
+.case .chips{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.st{font-family:var(--ui);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:2px solid currentColor}
+.st.y{color:var(--ok);background:var(--ok-soft)}
+.st.n{color:var(--no);background:var(--no-soft)}
+.st.j{color:var(--court);background:var(--court-soft)}
+.st.g{color:var(--muted);background:var(--soft)}
+.why{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
+.group-t{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* count */
+.tally{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;max-width:520px}
+.tally i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--ui);font-weight:900;font-size:clamp(14px,3vw,22px);color:var(--paper)}
+.tally i.y{background:var(--ok)}
+.tally i.n{background:var(--no)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--ui);font-weight:600;font-size:16px}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-2px}
+
+/* newspaper analogy */
+.jar{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.jar .card{border-top:6px solid var(--c)}
+.jar .card .emo{font-size:40px;line-height:1}
+.jar .card p{font-size:17px}
+.jar .card b{font-family:var(--ui);font-size:20px;line-height:1.3}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two .card{border-top:6px solid var(--c)}
+.two .card h3{font-size:20px}
+.two .card ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:17px;line-height:1.5}
+
+/* true or false */
+.vf{display:grid;gap:12px}
+.vfi{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.vfi p{font-size:18px}
+.badge{justify-self:start;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.badge.f{background:var(--no-soft);color:var(--no);border:2px solid var(--no)}
+.badge.m{background:var(--part-soft);color:var(--part);border:2px solid var(--part)}
+.badge.v{background:var(--ok-soft);color:var(--ok);border:2px solid var(--ok)}
+.badge.o{background:var(--open-soft);color:var(--open);border:2px solid var(--open)}
+
+/* de-para */
+.dp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:16px;line-height:1.45}
+.dp th,.dp td{padding:12px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.dp thead th{border-top:none;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.dp thead th.l{color:var(--no);background:var(--no-soft)}
+.dp thead th.r{color:var(--accent);background:var(--accent-soft)}
+.dp tbody th{font-family:var(--ui);font-weight:700;font-size:15px;width:24%}
+.dp .tg,.card .tg{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.dp .tg.d,.card .tg.d{color:var(--ok)}.dp .tg.a{color:var(--part)}.dp .tg.o{color:var(--open)}
+@media (max-width:640px){.dp,.dp thead,.dp tbody,.dp tr,.dp th,.dp td{display:block;width:100%}.dp thead{display:none}.dp tbody tr{border-top:2px solid var(--line)}.dp tbody th{background:var(--soft);width:100%}.dp td::before{content:attr(data-l);display:block;font-family:var(--ui);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}.dp td.l::before{color:var(--no)}.dp td.r::before{color:var(--accent)}}
+/* bars */
+.tl{display:grid;gap:10px}
+.tr{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.tr .lab{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--ui);font-weight:700;font-size:17px}
+.tr .lab span{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--muted)}
+.tr .t{height:30px;background:var(--soft);border-radius:3px;position:relative}
+.tr .f{position:absolute;inset:0 auto 0 0;background:var(--c);border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:var(--paper);font-family:var(--mono);font-weight:600;font-size:14px;white-space:nowrap}
+.tr .v{position:absolute;top:0;bottom:0;display:flex;align-items:center;font-family:var(--mono);font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap}
+.verdict{background:var(--ink);color:var(--paper);border-radius:6px;padding:22px 20px;display:grid;gap:12px}
+.verdict h2{color:var(--paper)}
+.verdict ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:20px}
+details.mais{margin-top:44px;border:2px solid var(--line);border-radius:6px;background:var(--paper)}
+details.mais>summary{cursor:pointer;padding:18px 20px;font-family:var(--ui);font-weight:700;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.mais>summary::after{content:"+";font-family:var(--mono);font-size:24px;line-height:1}
+details.mais[open]>summary::after{content:"−"}
+details.mais>summary::-webkit-details-marker{display:none}
+.mais-body{padding:0 20px 20px;font-size:17px;line-height:1.6;display:grid;gap:14px}
+.tbl{overflow-x:auto}
+.mais-body table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.mais-body th,.mais-body td{text-align:left;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+.mais-body th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mais-body td:first-child{font-family:var(--mono);white-space:nowrap;font-size:13px}
+footer{padding-block:44px 60px;color:var(--muted);font-size:14px;display:grid;gap:8px}
+@media (max-width:640px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}.who-decides{grid-template-columns:1fr}.case{grid-template-columns:minmax(0,1fr)}.case .when{padding-top:0}}
+
+/* where the litre goes */
+.stack{display:flex;height:46px;border-radius:6px;overflow:hidden;gap:2px}
+.stack i{flex:var(--w) 1 0;background:var(--c)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.part{background:var(--paper);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:6px;padding:12px 14px;display:grid;gap:2px;align-content:start}
+.part b{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:34px;line-height:1;color:var(--c)}
+.part span{font-family:var(--ui);font-weight:700;font-size:17px}
+.part small{font-size:14px;color:var(--muted);line-height:1.4}
+/* governments */
+.gov{background:var(--paper);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:6px;padding:18px 20px;display:grid;gap:12px}
+.gov .gh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px}
+.gov .gh h3{font-size:24px;color:var(--c)}
+.gov .gh span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.gov ul{margin:0;padding-left:0;list-style:none;display:grid;gap:12px;font-size:17px;line-height:1.55}
+.gov li{padding-left:28px;position:relative}
+.gov li>b.up,.gov li>b.dn{position:absolute;left:0;top:0;font-family:var(--ui);font-size:20px}
+b.up{color:var(--no)} b.dn{color:var(--ok)}
+.gov .tg{display:inline-block;margin-left:4px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ok)}
+/* price chart */
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 8px 6px}
+.chart svg{display:block;width:100%;height:auto}
+.chart .ax{stroke:var(--line)}
+.chart .gl{stroke:var(--soft)}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.chart .era{font-family:var(--ui);font-weight:800;font-size:12px}
+.chart .nom{fill:none;stroke:var(--accent);stroke-width:2.5}
+.chart .real{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:5 4}
+.chart .pk{fill:var(--accent)}
+.chart .lbl{font-family:var(--ui);font-weight:700;font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.chart .era{paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.keyl{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--ui);font-weight:600;font-size:15px}
+.keyl i{display:inline-block;width:22px;height:0;border-top:3px solid var(--accent);vertical-align:4px;margin-right:6px}
+.keyl i.r{border-top:3px dashed var(--ink)}
+.govcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.gc{background:var(--paper);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:6px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.gc h3{font-size:19px;color:var(--c)}
+.gc .n{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:40px;line-height:1}
+.gc small{font-size:14px;color:var(--muted);line-height:1.4}
+/* palantir */
+.tg{display:inline-block;margin-left:4px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ok);line-height:1.6;vertical-align:1px}
+.gov h3 small{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:500}
+.tg.o{color:var(--open)}.tg.a{color:var(--part)}.tg.n{color:var(--no)}
+.gov .tg.o{color:var(--open)}.gov .tg.a{color:var(--part)}.gov .tg.n{color:var(--no)}
+.board{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px}
+.board svg{display:block;width:100%;height:auto}
+.board text{font-family:var(--ui);font-weight:700;font-size:13px;fill:var(--ink)}
+.board .pin{fill:var(--accent)}
+.board .yarn{stroke:var(--accent);stroke-width:2.5;fill:none}
+.board .note{fill:var(--soft);stroke:var(--line)}
+.board .big{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.steps{display:grid;gap:10px}
+.stepx{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:6px;padding:14px 16px}
+.stepx .num{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:40px;line-height:1;color:var(--c)}
+.stepx p{font-size:17px;line-height:1.55;margin:0}
+.disclosure{border:2px dashed var(--accent);border-radius:6px;padding:14px 16px;background:var(--accent-soft);font-size:17px}
+</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/">Algoritmo</a><a href="https://fcarvalhodev.github.io/rota-do-posto/">Posto</a><a href="https://fcarvalhodev.github.io/rota-das-queimadas/">Queimadas</a><a href="https://fcarvalhodev.github.io/rota-dos-games/">Games</a><a href="https://fcarvalhodev.github.io/rota-do-contracheque/">Contracheque</a><a href="https://fcarvalhodev.github.io/rota-palantir/" aria-current="page">Palantir</a><a class="rb-lang" href="en/" hreflang="en" lang="en">EN</a></div></nav>
+<header class="wrap">
+  <div class="kicker">Rota Palantir</div>
+  <h1>O que a Palantir tem a ver com a guerra?</h1>
+  <p class="lede lg">A Palantir é uma empresa americana de software que trabalha para exércitos, polícias e espiões. Aqui está o que ela faz, para quem trabalha, o que se sabe sobre Gaza, o papel das outras big techs, a ponte com Trump e o que ela fez no Brasil. Cada fato tem fonte e uma etiqueta que diz quanto dele está provado.</p>
+  <a class="rv-btn" href="visual.html"><span aria-hidden="true">📊</span> Ver o resumo em ícones</a>
+</header>
+
+<main class="wrap">
+
+<section class="answer-box" aria-labelledby="h-curta">
+  <h2 id="h-curta">A resposta curta</h2>
+  <p class="lg">A Palantir faz programas que juntam dados espalhados e ajudam a decidir rápido. Nasceu com dinheiro de um fundo da <b>CIA</b> e hoje é uma das maiores fornecedoras de tecnologia do <b>Pentágono</b>. Também trabalha para a polícia de imigração dos EUA e, desde janeiro de 2024, tem uma parceria com o Ministério da Defesa de <b>Israel</b> para "missões ligadas à guerra". Isso é <b>documentado</b>.</p>
+  <p class="lg">Que a tecnologia dela escolha alvos em Gaza é acusação de uma relatora da ONU, e a empresa nega. As outras big techs ajudam militares de outro jeito: com <b>nuvem e inteligência artificial</b>, não entregando seus posts ou músicas. E a Palantir já trabalhou também para o <b>governo Lula</b>, no Ministério da Educação, até julho de 2026.</p>
+</section>
+
+<section aria-labelledby="h-faz">
+  <h2 id="h-faz">O que a Palantir faz, em uma imagem</h2>
+  <p class="sub lg">Pense no quadro de um detetive de filme: fotos, mapas e papéis presos na parede, ligados por barbantes. A Palantir faz esse quadro no computador, com milhões de informações, e liga tudo sozinha.</p>
+  <div class="board" role="img" aria-label="Desenho de um quadro de detetive: dados de telefone, câmeras, bancos, viagens e cadastros ligados por fios a um painel central">
+    <svg viewBox="0 0 640 260" aria-hidden="true">
+      <rect class="big" x="245" y="100" width="150" height="60" rx="8"/><text x="320" y="127" text-anchor="middle">Painel do cliente</text><text x="320" y="146" text-anchor="middle" style="font-weight:500;font-size:12px">Gotham · Foundry · AIP</text>
+      <g class="yarn"><path d="M95 50 Q200 70 260 105"/><path d="M95 210 Q200 190 260 155"/><path d="M545 50 Q440 70 380 105"/><path d="M545 210 Q440 190 380 155"/><path d="M320 30 V100"/><path d="M320 230 V160"/></g>
+      <g><rect class="note" x="20" y="28" width="150" height="40" rx="4"/><text x="95" y="53" text-anchor="middle">Registros de telefone</text></g>
+      <g><rect class="note" x="20" y="190" width="150" height="40" rx="4"/><text x="95" y="215" text-anchor="middle">Câmeras e satélites</text></g>
+      <g><rect class="note" x="470" y="28" width="150" height="40" rx="4"/><text x="545" y="53" text-anchor="middle">Contas e bancos</text></g>
+      <g><rect class="note" x="470" y="190" width="150" height="40" rx="4"/><text x="545" y="215" text-anchor="middle">Viagens e fronteiras</text></g>
+      <g><rect class="note" x="255" y="4" width="130" height="34" rx="4"/><text x="320" y="26" text-anchor="middle">Cadastros públicos</text></g>
+      <g><rect class="note" x="255" y="222" width="130" height="34" rx="4"/><text x="320" y="244" text-anchor="middle">Relatórios de campo</text></g>
+      <g class="pin"><circle cx="95" cy="30" r="5"/><circle cx="95" cy="192" r="5"/><circle cx="545" cy="30" r="5"/><circle cx="545" cy="192" r="5"/><circle cx="320" cy="6" r="5"/><circle cx="320" cy="224" r="5"/></g>
+    </svg>
+  </div>
+  <p class="lg">Um detalhe importante: a Palantir <b>não tem um banco de dados próprio</b> com a vida das pessoas. Ela vende o programa, e o cliente coloca os dados que já tem. Por isso, o que o programa faz depende de quem usa: pode servir para planejar a merenda escolar ou para escolher um alvo. Críticos dizem que juntar tudo num lugar só torna mais fácil vigiar e abusar. <span class="tg">Documentado</span></p>
+  <span class="src"><a href="https://en.wikipedia.org/wiki/Palantir" target="_blank" rel="noopener">Wikipédia: Palantir, com Wired e outras fontes</a></span>
+</section>
+
+<section aria-labelledby="h-origem">
+  <h2 id="h-origem">De onde ela veio</h2>
+  <div class="steps">
+    <div class="stepx" style="--c:var(--accent)"><span class="num">2003</span><p><b>Fundada por Peter Thiel, Alex Karp e outros três sócios.</b> Thiel é o bilionário que criou o PayPal. Karp é o presidente da empresa desde 2004. O nome vem das pedras mágicas de "O Senhor dos Anéis", que deixam ver longe. <span class="tg">Documentado</span></p></div>
+    <div class="stepx" style="--c:var(--accent)"><span class="num">CIA</span><p><b>Dinheiro inicial de um fundo da CIA.</b> O In-Q-Tel, fundo de investimento ligado à agência de espionagem americana, pôs cerca de US$ 2 milhões. Thiel bancou a maior parte dos primeiros US$ 30 milhões. <span class="tg">Documentado</span></p></div>
+    <div class="stepx" style="--c:var(--accent)"><span class="num">2020</span><p><b>Vai para a Bolsa.</b> Em 2025, faturou US$ 4,48 bilhões. Em 2024, mais da metade das vendas, 53,7%, foi para governos. O valor de mercado passou de US$ 400 bilhões em 2025. <span class="tg">Documentado</span></p></div>
+  </div>
+  <span class="src"><a href="https://en.wikipedia.org/wiki/Palantir" target="_blank" rel="noopener">Wikipédia: Palantir</a><a href="https://www.malaymail.com/news/money/2026/06/19/why-europe-is-getting-nervous-about-palantir-the-data-firm-named-after-the-lord-of-the-rings-seeing-stones/224326" target="_blank" rel="noopener">Malay Mail: o nome</a></span>
+</section>
+
+<section aria-labelledby="h-eua">
+  <h2 id="h-eua">O braço militar dos EUA</h2>
+  <p class="sub lg">Contratos com governos de Obama, Trump e Biden. A empresa cresceu com os dois partidos americanos.</p>
+  <div class="tl" id="contratos" role="img" aria-label="Valores máximos de contratos da Palantir com o governo americano: acordo com o Exército até US$ 10 bilhões; sistema Maven até cerca de US$ 1,3 bilhão; contrato de 2014 com o ICE, US$ 41 milhões; ImmigrationOS do ICE, US$ 30 milhões"></div>
+  <div class="gov" style="--c:var(--accent)">
+    <div class="gh"><h3>Maven: a IA que acha alvos</h3><span>2019 – 2025</span></div>
+    <ul>
+      <li><b class="up">●</b> <b>Assume o projeto que o Google largou.</b> Em 2018, funcionários do Google protestaram contra o Projeto Maven, do Pentágono, e a empresa saiu. A Palantir assumiu em 2019. <span class="tg">Documentado</span></li>
+      <li><b class="up">●</b> <b>O que o Maven faz.</b> Usa IA para detectar, marcar e seguir objetos e pessoas em imagens de drones, aviões e satélites. Em 2025 tinha mais de 20 mil usuários militares. <span class="tg">Documentado</span></li>
+      <li><b class="up">●</b> <b>Dinheiro.</b> Contrato de US$ 480 milhões em maio de 2024, no governo Biden. Em maio de 2025, já com Trump, o teto subiu para cerca de US$ 1,3 bilhão. A Otan comprou a sua versão em março de 2025. <span class="tg">Documentado</span></li>
+    </ul>
+    <span class="src"><a href="https://defensescoop.com/2025/05/23/dod-palantir-maven-smart-system-contract-increase/" target="_blank" rel="noopener">DefenseScoop: teto do Maven</a><a href="https://defensescoop.com/2025/04/14/nato-palantir-maven-smart-system-contract/" target="_blank" rel="noopener">DefenseScoop: Otan</a></span>
+  </div>
+  <div class="gov" style="--c:var(--accent)">
+    <div class="gh"><h3>Exército, imigração e Receita</h3><span>2014 – 2025</span></div>
+    <ul>
+      <li><b class="up">●</b> <b>Exército: até US$ 10 bilhões em 10 anos.</b> Em julho de 2025, um acordo único substituiu 75 contratos separados. <span class="tg">Documentado</span></li>
+      <li><b class="up">●</b> <b>ICE, a polícia de imigração.</b> Trabalha com o ICE desde 2013; um contrato de 2014, no governo Obama, valia US$ 41 milhões. Em 2025, com Trump, recebeu US$ 30 milhões para o ImmigrationOS, sistema que escolhe quem deportar primeiro e acompanha quem sai do país. <span class="tg">Documentado</span></li>
+      <li><b class="up">●</b> <b>Dados da Receita americana.</b> O New York Times disse, em maio de 2025, que o trabalho da Palantir no governo Trump caminhava para juntar dados de americanos de vários órgãos. Deputados democratas cobraram explicações. A Palantir nega e diz que "não está construindo um banco de dados mestre". <span class="tg o">Em aberto</span></li>
+    </ul>
+    <span class="src"><a href="https://www.theregister.com/2025/08/01/palantir_us_army_contract/" target="_blank" rel="noopener">The Register: Exército</a><a href="https://www.americanimmigrationcouncil.org/blog/ice-immigrationos-palantir-ai-track-immigrants/" target="_blank" rel="noopener">American Immigration Council: ICE</a><a href="https://nextgov.com/modernization/2025/06/democrats-press-palantir-about-reported-creation-irs-mega-database/406144" target="_blank" rel="noopener">Nextgov: Receita</a></span>
+  </div>
+</section>
+
+<section aria-labelledby="h-gaza">
+  <h2 id="h-gaza">Israel e a guerra em Gaza</h2>
+  <p class="sub lg">Aqui é preciso separar com cuidado: o contrato é público; o uso exato da tecnologia nos ataques, não.</p>
+  <div class="cases">
+    <div class="case" style="--c:var(--accent)"><span class="when">jan 2024</span><div class="bd"><h3>Parceria estratégica com o Ministério da Defesa de Israel</h3><p>Depois de uma reunião em Tel Aviv com Thiel e Karp, a Palantir anunciou o acordo para "missões ligadas à guerra". Foi a primeira reunião do conselho da empresa em Israel, feita como gesto de solidariedade. O que exatamente ela fornece não foi divulgado.</p><div class="chips"><span class="st y">Documentado</span></div><span class="src"><a href="https://www.bnnbloomberg.ca/thiel-s-palantir-israel-agree-strategic-partnership-for-battle-tech-1.2021218" target="_blank" rel="noopener">Bloomberg</a></span></div></div>
+    <div class="case" style="--c:var(--accent)"><span class="when">out 2024</span><div class="bd"><h3>Fundo norueguês vende as ações</h3><p>A gestora Storebrand vendeu cerca de US$ 24 milhões em ações da Palantir por causa de vendas a Israel para uso nos territórios palestinos ocupados, por risco de violar o direito humanitário. Disse que a empresa não respondeu às perguntas que mandou.</p><div class="chips"><span class="st y">Documentado</span></div><span class="src"><a href="https://investing.com/news/stock-market-news/thiels-palantir-dumped-by-norwegian-investor-over-work-for-israel-3683974" target="_blank" rel="noopener">Reuters, via Investing.com</a></span></div></div>
+    <div class="case" style="--c:var(--accent)"><span class="when">abr 2025</span><div class="bd"><h3>"Na maioria, terroristas"</h3><p>Num evento nos EUA, um manifestante acusou a tecnologia da Palantir de matar palestinos. Karp respondeu: "Na maioria, terroristas. Isso é verdade." O vídeo circulou de novo em 2025.</p><div class="chips"><span class="st y">Documentado</span></div><span class="src"><a href="https://www.israelhayom.com/2025/09/01/watch-palantirs-alex-karp-shuts-down-pro-palestinian-heckler-in-resurfaced-clip/" target="_blank" rel="noopener">Israel Hayom</a></span></div></div>
+    <div class="case" style="--c:var(--open)"><span class="when">jun–jul 2025</span><div class="bd"><h3>Relatora da ONU cita a Palantir</h3><p>O relatório de Francesca Albanese, relatora especial da ONU para os territórios palestinos, lista empresas que lucram com a guerra. Diz que há motivos para crer que a tecnologia da Palantir é usada para escolher alvos e que as falas de Karp mostram que a direção sabia do uso ilegal da força. O mesmo relatório cita Microsoft, Google e Amazon. Os EUA puniram a relatora com sanções em julho de 2025.</p><div class="chips"><span class="st j">Alegação</span></div><span class="src"><a href="https://progressive.international/wire/2025-11-17-how-the-world-enriches-from-the-blood-of-the-palestinians/en" target="_blank" rel="noopener">Progressive International: resumo do relatório</a></span></div></div>
+    <div class="case" style="--c:var(--g-temer)"><span class="when">mai 2025</span><div class="bd"><h3>A resposta da Palantir</h3><p>Em carta à ONU, a empresa chama as acusações de "totalmente falsas". Diz que não fez nem participa do Gospel e do Lavender, sistemas de IA do Exército israelense para escolher alvos, e que só começou a trabalhar com a Defesa de Israel depois do ataque do Hamas de 7 de outubro de 2023. Diz também que se orgulha de apoiar Israel.</p><div class="chips"><span class="st y">Documentado</span><span class="why">a carta existe; se ela é verdadeira, não dá para conferir de fora</span></div><span class="src"><a href="https://www.palantir.com/assets/xrfr7uokpv1b/1aXqmYRvd1KY5SErhxQQyo/59efaf38eb9c2494752f0131dce714a0/Palantir_Response_to_UN_SRHRP_Letter_-_22_May_2025.pdf" target="_blank" rel="noopener">Palantir: resposta à ONU, 22 de maio de 2025</a></span></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-big">
+  <h2 id="h-big">E as outras big techs?</h2>
+  <p class="sub lg">Elas ajudam militares de outro jeito: alugando <b>nuvem</b> (computadores gigantes) e <b>modelos de inteligência artificial</b>. Nas fontes que lemos, não aparece nenhuma delas entregando para a Palantir os posts, as fotos ou as músicas dos usuários.</p>
+  <div class="two">
+    <div class="card" style="--c:#2563eb"><h3>Microsoft</h3><ul><li>Segundo o Guardian, a unidade de espionagem 8200, de Israel, guardava na nuvem Azure dados de vigilância sobre ligações telefônicas de palestinos.</li><li>Em setembro de 2025, depois de uma investigação interna, a Microsoft cortou esses serviços para a unidade. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://techcrunch.com/2025/09/25/microsoft-cuts-cloud-services-to-israeli-military-unit-over-palestinian-surveillance" target="_blank" rel="noopener">TechCrunch</a></span></div>
+    <div class="card" style="--c:#16a34a"><h3>Google e Amazon</h3><ul><li>Projeto Nimbus: contrato de nuvem de US$ 1,2 bilhão com o governo de Israel, de 2021.</li><li>Em abril de 2024, o Google demitiu 28 funcionários que protestaram contra o contrato. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://www.al-monitor.com/originals/2024/04/google-fires-28-staffers-after-protesting-israel-cloud-contract" target="_blank" rel="noopener">Al-Monitor</a></span></div>
+    <div class="card" style="--c:#1d4ed8"><h3>Meta</h3><ul><li>Em novembro de 2024, liberou a IA Llama para agências de defesa e segurança dos EUA e para empresas que trabalham para elas, entre elas a Palantir e a Lockheed Martin.</li><li>É o modelo de IA, não os dados de quem usa Facebook e Instagram. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://www.neowin.net/news/metas-llama-models-now-available-to-us-government-agencies/" target="_blank" rel="noopener">Neowin</a></span></div>
+    <div class="card" style="--c:#111827"><h3>xAI, a empresa de IA de Elon Musk, dono do X</h3><ul><li>Em 2025, o Grok entrou na plataforma de IA da Palantir, e a xAI fechou uma parceria com a Palantir para o setor financeiro.</li><li>Não há registro de posts do X indo para a Palantir. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://jp.benzinga.com/?p=37043" target="_blank" rel="noopener">Benzinga: Grok na Palantir</a><a href="https://www.derstandard.at/story/3000000268607/musks-xai-wird-partner-von-palantir" target="_blank" rel="noopener">Der Standard: parceria</a></span></div>
+    <div class="card" style="--c:#b45309"><h3>Spotify: outro caso</h3><ul><li>Não envolve a Palantir. O fundo de Daniel Ek, fundador do Spotify, liderou em junho de 2025 um investimento de € 600 milhões na Helsing, empresa alemã de drones e IA militar, e Ek preside o conselho dela.</li><li>Deerhoof, Xiu Xiu, King Gizzard e Massive Attack tiraram suas músicas do Spotify em protesto.</li><li>A Helsing diz que atua só na defesa da Europa e na Ucrânia. O Spotify diz que são empresas separadas e que a Helsing não atua em Gaza. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://completemusicupdate.com/increasing-number-of-artists-join-spotify-boycott-over-ceos-ai-weapon-investments/" target="_blank" rel="noopener">CMU</a><a href="https://rollingstone.com.br/musica/massive-attack-sai-do-spotify-e-bloqueia-musica-em-israel-por-questoes-eticas/" target="_blank" rel="noopener">Rolling Stone Brasil</a></span></div>
+    <div class="card" style="--c:var(--accent)"><h3>Anthropic</h3><ul><li>Em novembro de 2024, a Anthropic fez parceria com a Palantir e a Amazon para oferecer a IA Claude a agências de defesa e inteligência dos EUA, inclusive em redes de nível secreto. <span class="tg">Documentado</span></li></ul><span class="src"><a href="https://siliconangle.com/2024/11/07/anthropic-partners-aws-palantir-provide-ai-models-defense-agencies/" target="_blank" rel="noopener">SiliconANGLE</a></span></div>
+  </div>
+  <p class="disclosure"><b>Transparência:</b> as Rotas são escritas com a ajuda do Claude, a IA da Anthropic, que aparece no último quadro. Por isso essa parceria está aqui com o mesmo critério das outras.</p>
+</section>
+
+<section aria-labelledby="h-ponte">
+  <h2 id="h-ponte">A ponte com Trump, Vance e Flávio</h2>
+  <p class="sub lg">Há ligação em três degraus. Cada degrau tem um grau de prova diferente.</p>
+  <div class="steps">
+    <div class="stepx" style="--c:var(--ok)"><span class="num">1</span><p><b>Ideias em comum.</b> Karp defende, no livro <i>The Technological Republic</i>, de 2025, que as empresas de tecnologia devem voltar a trabalhar com o governo pela segurança nacional e pelo Ocidente. A Estratégia de Segurança Nacional de Trump, de dezembro de 2025, põe as Américas como prioridade e quer barrar a influência de potências de fora, como a China. Flávio Bolsonaro defende esse alinhamento com os EUA em público. <span class="tg">Documentado</span></p></div>
+    <div class="stepx" style="--c:var(--ok)"><span class="num">2</span><p><b>Rede de pessoas.</b> Thiel, cofundador da Palantir, contratou JD Vance para o fundo dele, apresentou Vance a Trump em 2021 e deu US$ 15 milhões para a campanha dele ao Senado em 2022. Vance é hoje vice-presidente e esteve na reunião com Flávio na Casa Branca, em maio de 2026. Ex-funcionários da Palantir trabalharam no DOGE, de Elon Musk. <span class="tg">Documentado</span></p></div>
+    <div class="stepx" style="--c:var(--no)"><span class="num">3</span><p><b>Ação na eleição brasileira.</b> Nenhuma fonte mostra contrato, dinheiro, dado ou reunião da Palantir com a campanha de Flávio, nem com a de Lula. Estar na mesma rede mostra interesses parecidos; não prova que a empresa agiu na eleição. <span class="tg n">Não demonstrado</span></p></div>
+  </div>
+  <span class="src"><a href="https://techcrunch.com/2025/02/23/palantir-ceos-new-book-says-silicon-valley-has-lost-its-way" target="_blank" rel="noopener">TechCrunch: o livro de Karp</a><a href="https://www.cbsnews.com/news/jd-vance-trump-vp-peter-thiel-billionaire/" target="_blank" rel="noopener">CBS: Thiel e Vance</a><a href="https://nextgov.com/modernization/2025/06/democrats-press-palantir-about-reported-creation-irs-mega-database/406144" target="_blank" rel="noopener">Nextgov: Palantir e DOGE</a><a href="https://www.itatiaia.com.br/mundo/doutrina-monroe-dominio-eua-video-departamento-estado/" target="_blank" rel="noopener">Itatiaia: a doutrina de Trump</a><a href="https://fcarvalhodev.github.io/rota-washington/" target="_blank" rel="noopener">Rota Washington</a></span>
+</section>
+
+<section aria-labelledby="h-br">
+  <h2 id="h-br">A Palantir no Brasil</h2>
+  <div class="cases">
+    <div class="case" style="--c:var(--g-lula)"><span class="when">2023 – jul 2026</span><div class="bd"><h3>Ministério da Educação, no governo Lula</h3><p>O FNDE, fundo do MEC que paga merenda, transporte escolar e Fies, usou os programas Foundry e AIP da Palantir. Não houve licitação para escolher a Palantir: ela entrou pela loja virtual da Amazon, dentro de um contrato de nuvem de até R$ 21,66 milhões com o Serpro, assinado em novembro de 2023. O uso começou em março de 2024, com dados do transporte escolar. O FNDE diz que só usou dados públicos, hospedados no Brasil. A deputada Sâmia Bomfim, do PSOL, partido aliado do governo, cobrou explicações em dezembro de 2025. O FNDE abandonou a Palantir em julho de 2026.</p><div class="chips"><span class="st y">Documentado</span><span class="why">quanto foi pago só à Palantir não foi divulgado</span></div><span class="src"><a href="https://capitaldigital.com.br/fnde-descontinua-palantir-apos-polemico-contrato-de-r-216-milhoes-com-serpro-e-aws/" target="_blank" rel="noopener">Capital Digital</a><a href="https://sindpdce.org.br/2026/06/10/palantir-no-mec-a-porta-dos-fundos-da-soberania-digital/" target="_blank" rel="noopener">Jornal GGN, via SindPD-CE</a></span></div></div>
+    <div class="case" style="--c:var(--g-temer)"><span class="when">ago 2024</span><div class="bd"><h3>Empresas privadas</h3><p>A seguradora Sompo usa a Palantir no Brasil para calcular o preço de seguros de transporte marítimo. Foi o primeiro contrato da Palantir com uma seguradora no país.</p><div class="chips"><span class="st y">Documentado</span></div><span class="src"><a href="https://www.baguete.com.br/noticias/sompo-usa-palantir-no-brasil" target="_blank" rel="noopener">Baguete</a></span></div></div>
+    <div class="case" style="--c:var(--gray)"><span class="when">pandemia</span><div class="bd"><h3>Governo de São Paulo</h3><p>Um colunista da CartaCapital diz que a Palantir fez uma doação ao governo de São Paulo na pandemia, com João Doria, e que avançou na Prodesp, a empresa de informática do estado. Não achamos documento que confirme.</p><div class="chips"><span class="st j">Alegação</span></div><span class="src"><a href="https://www.cartacapital.com.br/artigo/as-sombras-da-palantir-e-o-brasil/" target="_blank" rel="noopener">CartaCapital, coluna de opinião</a></span></div></div>
+  </div>
+  <p class="note">Fora do Brasil, alguns governos aliados dos EUA também estão recuando: em 2026, a França anunciou que vai trocar a Palantir por uma empresa francesa, e o prefeito de Londres barrou um contrato com a polícia da cidade. <a href="https://en.wikipedia.org/wiki/Palantir" target="_blank" rel="noopener">Wikipédia: Palantir</a></p>
+</section>
+
+<section id="h-vf" aria-labelledby="h-vf-t">
+  <h2 id="h-vf-t">É verdade?</h2>
+  <div class="vf">
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“A Palantir trabalha para o Exército de Israel na guerra.”</b> Desde janeiro de 2024, há uma parceria estratégica com o Ministério da Defesa de Israel para “missões ligadas à guerra”, anunciada pela própria empresa.</p></div>
+    <div class="vfi"><span class="badge o">Não demonstrado</span><p><b>“A Palantir fez o Lavender, a IA que escolhe alvos em Gaza.”</b> O Lavender e o Gospel são sistemas do Exército israelense. A relatora da ONU liga a Palantir à escolha de alvos; a empresa nega ter feito ou participar desses dois sistemas. Até agora, ninguém mostrou documento que resolva a dúvida.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“O Spotify vende seus dados para a guerra.”</b> O que existe é o investimento do fundo de Daniel Ek, fundador do Spotify, na Helsing, empresa alemã de drones e IA militar. Não há registro de dados de usuários do Spotify indo para a Helsing ou para a Palantir.</p></div>
+    <div class="vfi"><span class="badge o">Não demonstrado</span><p><b>“O X e o Facebook entregam seus posts para a Palantir.”</b> Meta e xAI, de Elon Musk, cederam seus <b>modelos de IA</b>, o Llama e o Grok, para uso militar e na plataforma da Palantir. Isso é diferente de entregar posts e fotos dos usuários, e isso não aparece nas fontes.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“As big techs americanas trabalham para militares.”</b> Microsoft, Google, Amazon, Meta, Anthropic e xAI têm contratos ou parcerias de nuvem e IA com governos e militares, nos EUA e em Israel. A Microsoft cortou parte dos serviços à unidade 8200 de Israel em 2025.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“A Palantir só trabalha para governos de direita.”</b> Cresceu com contratos de Obama, Biden e Trump. No Brasil, o Ministério da Educação do governo Lula usou os programas dela de 2024 até julho de 2026.</p></div>
+    <div class="vfi"><span class="badge o">Não demonstrado</span><p><b>“A Palantir está ajudando a eleger Flávio Bolsonaro.”</b> Há ideias em comum e uma rede de pessoas, de Thiel a Vance e Trump. Mas nenhuma fonte mostra contrato, dinheiro, dado ou reunião da empresa com qualquer campanha no Brasil.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“A Palantir nasceu com dinheiro da CIA.”</b> O In-Q-Tel, fundo ligado à CIA, investiu cerca de US$ 2 milhões no começo. A maior parte veio de Peter Thiel.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-resumo">
+  <div class="verdict">
+    <h2 id="h-resumo">Resumo</h2>
+    <ul>
+      <li>A Palantir faz programas que juntam dados e ajudam a decidir. Nasceu com dinheiro de um fundo da CIA e é uma das maiores fornecedoras do Pentágono, com contratos de governos democratas e republicanos.</li>
+      <li>Trabalha para Israel na guerra desde janeiro de 2024. Que escolha alvos em Gaza é acusação da ONU, negada pela empresa.</li>
+      <li>As outras big techs ajudam militares com nuvem e IA. Não há prova de que entreguem à Palantir os dados de quem usa as redes, e o caso do Spotify é outro: o investimento do fundador numa empresa de drones.</li>
+      <li>A ponte com Trump e Vance é real, por ideias e por pessoas. A ponte com a campanha de Flávio não foi demonstrada.</li>
+      <li>No Brasil, o MEC do governo Lula usou a Palantir até julho de 2026.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Cada fato traz o link de onde saiu. Investigação e acusação não são condenação, e a versão da empresa está no texto quando ela respondeu.</p>
+  <p>Atualizado em 23 de outubro de 2026.</p>
+</footer>
+
+<section id="fontes-revisao" aria-labelledby="h-fontes-revisao" style="margin-block:32px;padding:20px;border:1px solid var(--line);border-radius:6px">
+<h2 id="h-fontes-revisao">Fontes e limites da leitura</h2>
+<p>Os valores de contratos americanos são tetos, ou seja, o máximo que pode ser gasto, e não o que foi pago. Contratos militares e de inteligência têm partes secretas, então ninguém de fora sabe tudo o que a Palantir faz para Israel ou para o Pentágono. O relatório da relatora da ONU é uma acusação, não uma decisão de tribunal, e foi rejeitado pelos governos de Israel e dos EUA. A carta da Palantir é a versão da empresa. Parte das informações sobre a empresa vem da Wikipédia em inglês, que reúne reportagens; os fatos centrais foram conferidos nas fontes originais citadas. Sobre o Brasil, o valor pago só à Palantir pelo FNDE não foi divulgado. A ligação com Trump e Vance é de pessoas e de ideias; ela não prova ação na eleição brasileira.</p>
+<p style="font-size:14px"><a href="https://fcarvalhodev.github.io/rotas/metodologia.html">Como distinguimos fatos, alegações e interpretações</a> · Revisão editorial: 23 de outubro de 2026.</p>
+</section>
+</main>
+
+<script>
+(function(){
+const fmt=(v,d=0)=>v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const bars=(id,rows,max,f)=>{const el=document.getElementById(id);if(!el)return;el.innerHTML=rows.map(r=>{const w=Math.max(r[2]/max*100,.6),t=f(r);return `<div class="tr"><div class="lab">${r[0]}<span>${r[1]}</span></div><div class="t">${w<30?`<span class="f" style="--c:${r[3]};width:${w}%"></span><span class="v" style="left:calc(${w}% + 8px)">${t}</span>`:`<span class="f" style="--c:${r[3]};width:${w}%">${t}</span>`}</div></div>`}).join('')};
+bars('contratos',[["Exército dos EUA","jul 2025, 10 anos, Trump",10000,"var(--accent)","até US$ 10 bilhões"],["Maven, a IA de alvos","2024 com Biden, ampliado em 2025 com Trump",1300,"var(--accent)","até US$ 1,3 bilhão"],["ICE, gestão de casos","2014, Obama",41,"var(--g-temer)","US$ 41 milhões"],["ICE, ImmigrationOS","2025, Trump",30,"var(--g-temer)","US$ 30 milhões"]],10000,r=>r[4]);
+})();
+</script>
+
+</body></html>
