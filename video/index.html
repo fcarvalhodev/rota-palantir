@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rota Palantir em vídeo</title>
+<meta name="description" content="Vídeo de 2 minutos, no formato vertical do Instagram, que resume a Rota Palantir com fonte em cada fato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a 9:16 video page (1080×1920), sized for Instagram Reels/Stories. A JS clock drives every scene, so the same timeline plays live or frame by frame for export. Safe area keeps text away from the app's top and bottom UI. */
+:root{--hero:#5c0b22;--accent:#9f1239;--ink:#fff;--doc:#1f6b45;--alleg:#b7791f;--open:#6b5bb5;--no:#b42318;--gray:#4b5563;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;--ui:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0b0b0f;overflow:hidden}
+body{display:grid;place-items:center;font-family:var(--ui);color:#fff}
+#wrap{width:1080px;height:1920px;transform-origin:center center;position:relative;flex:none}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--hero)}
+#bg{position:absolute;inset:-20%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.16),transparent 45%),radial-gradient(circle at 75% 80%,rgba(0,0,0,.35),transparent 55%)}
+#grain{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 2px,transparent 2px 4px);pointer-events:none}
+.prog{position:absolute;top:56px;left:60px;right:60px;display:flex;gap:8px;z-index:5}
+.prog i{flex:1;height:8px;border-radius:8px;background:rgba(255,255,255,.28);overflow:hidden;position:relative}
+.prog i b{position:absolute;inset:0;width:0;background:#fff}
+.brand{position:absolute;top:92px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:30px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;z-index:5}
+.scene{position:absolute;inset:0;padding:300px 80px 420px;display:flex;flex-direction:column;justify-content:center;gap:34px;opacity:0}
+.el{opacity:0}
+.k{font-family:var(--mono);font-size:34px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.h{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:150px;line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+.h.m{font-size:118px}.h.s{font-size:96px}
+.p{font-size:50px;line-height:1.22;font-weight:600}
+.p b{background:rgba(255,255,255,.18);padding:0 10px;border-radius:8px}
+.emoji{font-size:200px;line-height:1}
+.stamp{align-self:flex-start;font-family:var(--ui);font-weight:900;font-size:46px;letter-spacing:.05em;text-transform:uppercase;padding:12px 28px;border:6px solid #fff;border-radius:16px;background:var(--c);transform-origin:left center}
+.num{font-family:var(--display);font-stretch:66%;font-weight:900;font-size:220px;line-height:.9}
+.num small{font-size:70px;font-weight:800;margin-left:10px}
+.bars{display:grid;gap:26px}
+.bar .t{display:flex;justify-content:space-between;font-size:40px;font-weight:700;margin-bottom:10px}
+.bar .t span{font-family:var(--mono);font-weight:600}
+.bar .tr{height:56px;background:rgba(255,255,255,.18);border-radius:12px;overflow:hidden}
+.bar .f{height:100%;width:0;background:#fff;border-radius:12px}
+.chips{display:flex;flex-wrap:wrap;gap:18px}
+.chip{font-weight:800;font-size:40px;background:rgba(255,255,255,.14);border:3px solid rgba(255,255,255,.5);border-radius:999px;padding:12px 28px}
+.steps{display:grid;gap:22px}
+.step{display:grid;grid-template-columns:90px 1fr;gap:20px;align-items:center;background:rgba(0,0,0,.22);border-left:12px solid var(--c);border-radius:16px;padding:22px 26px}
+.step b{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:90px;line-height:1}
+.step span{font-size:40px;line-height:1.2;font-weight:700}
+.step em{display:block;font-style:normal;font-family:var(--mono);font-size:28px;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;opacity:.9}
+.src{position:absolute;left:80px;right:80px;bottom:330px;font-family:var(--mono);font-size:28px;color:rgba(255,255,255,.75);line-height:1.35}
+.big{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:120px;line-height:.9;text-transform:uppercase}
+#ui{position:fixed;inset:0;display:grid;place-items:center;z-index:20;background:rgba(0,0,0,.55);gap:16px;align-content:center;font-family:var(--ui)}
+#ui button{font-family:var(--ui);font-weight:900;font-size:22px;border:0;border-radius:999px;padding:16px 28px;background:#fff;color:#111;cursor:pointer}
+#ui p{margin:0;color:#fff;max-width:420px;text-align:center;font-size:16px;line-height:1.4;padding:0 16px}
+#ui a{color:#fff}
+.rec #ui{display:none}
+</style>
+</head><body>
+<div id="wrap"><div id="stage" role="img" aria-label="Vídeo animado de 2 minutos resumindo a Rota Palantir">
+ <div id="bg"></div><div id="grain"></div>
+ <div class="prog" id="prog"></div>
+ <div class="brand"><span>Rota Palantir</span><span>fcarvalhodev.github.io/rotas</span></div>
+ <div id="scenes"></div>
+</div></div>
+<div id="ui"><button type="button" id="play">▶ Assistir (2 min)</button><p>Formato vertical do Instagram. Para gravar, abra em tela cheia no celular e use a gravação de tela, ou baixe o MP4 pronto.</p><p><a href="../index.html">Voltar para a rota</a> · <a href="rota-palantir-2min.mp4" download>Baixar o MP4</a></p></div>
+<script>
+const SC=[{"dur": 8, "els": [{"t": "emoji", "html": "🔮", "d": 0}, {"t": "k", "text": "Rota Palantir", "d": 0.3}, {"t": "h", "text": "A empresa que vê tudo", "d": 0.5, "cls": ""}, {"t": "p", "html": "O que a <b>Palantir</b> tem a ver com a guerra? Em 2 minutos, com fonte em cada fato.", "d": 1.2}]}, {"dur": 9, "els": [{"t": "k", "text": "O que ela faz", "d": 0}, {"t": "h", "text": "O quadro do detetive", "d": 0.2, "cls": "m"}, {"t": "p", "html": "Junta <b>telefone, câmeras, bancos, viagens e cadastros</b> num painel só, e liga tudo sozinha.", "d": 0.8}, {"t": "p", "html": "Mas não tem banco de dados próprio: <b>quem contrata coloca os dados</b>.", "d": 2.6}, {"t": "src", "text": "Fonte: Wikipédia: Palantir, com Wired", "d": 0.8}]}, {"dur": 9, "els": [{"t": "k", "text": "De onde veio", "d": 0}, {"t": "num", "n": 2003, "suf": "", "pre": "", "dec": 0, "d": 0.2, "g": 0}, {"t": "p", "html": "Fundada por <b>Peter Thiel</b>, do PayPal, e <b>Alex Karp</b>.", "d": 0.8}, {"t": "p", "html": "Dinheiro inicial: cerca de <b>US$ 2 milhões</b> do In-Q-Tel, fundo da <b>CIA</b>.", "d": 1.8}, {"t": "stamp", "v": "doc", "d": 2.8}, {"t": "src", "text": "Fonte: Wikipédia: Palantir", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "O braço militar dos EUA", "d": 0}, {"t": "h", "text": "A IA que acha alvos", "d": 0.2, "cls": "m"}, {"t": "bars", "d": 0.8, "items": [["Exército, 2025", 100, "até US$ 10 bi"], ["Maven, 2024–2025", 13, "até US$ 1,3 bi"]]}, {"t": "p", "html": "Assumiu o <b>Projeto Maven</b> depois que o Google saiu, em 2019.", "d": 2.4}, {"t": "src", "text": "Fonte: DefenseScoop · The Register", "d": 0.8}]}, {"dur": 9, "els": [{"t": "k", "text": "Imigração", "d": 0}, {"t": "h", "text": "Quem deportar primeiro", "d": 0.2, "cls": "m"}, {"t": "p", "html": "Trabalha para o <b>ICE</b> desde 2013. Contrato com <b>Obama</b> em 2014. Novo sistema com <b>Trump</b> em 2025.", "d": 0.8}, {"t": "p", "html": "Cresceu com <b>os dois partidos</b>.", "d": 2.4}, {"t": "stamp", "v": "doc", "d": 3}, {"t": "src", "text": "Fonte: American Immigration Council", "d": 0.8}]}, {"dur": 9, "els": [{"t": "k", "text": "Israel", "d": 0}, {"t": "h", "text": "“Missões ligadas à guerra”", "d": 0.2, "cls": "m"}, {"t": "p", "html": "Em <b>janeiro de 2024</b>, parceria estratégica com o Ministério da Defesa de Israel, anunciada em Tel Aviv.", "d": 0.9}, {"t": "stamp", "v": "doc", "d": 2.6}, {"t": "src", "text": "Fonte: Bloomberg", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "Gaza", "d": 0}, {"t": "h", "text": "Acusação e resposta", "d": 0.2, "cls": "m"}, {"t": "p", "html": "Relatora da <b>ONU</b>: a tecnologia ajuda a escolher alvos.", "d": 0.8}, {"t": "stamp", "v": "alleg", "d": 1.6}, {"t": "p", "html": "Palantir: <b>“totalmente falso”</b>. Nega ter feito o Lavender e o Gospel.", "d": 2.8}, {"t": "stamp", "v": "ver", "d": 3.6}, {"t": "src", "text": "Fonte: Relatório Albanese, 2025 · carta da Palantir à ONU", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "E as big techs?", "d": 0}, {"t": "h", "text": "Nuvem e IA para militares", "d": 0.2, "cls": "s"}, {"t": "chips", "d": 0.8, "items": ["Microsoft", "Google", "Amazon", "Meta", "xAI", "Anthropic"]}, {"t": "p", "html": "Elas alugam <b>nuvem e modelos de IA</b>. Inclusive a Anthropic, que faz o Claude, a IA que ajuda a escrever as Rotas.", "d": 1.8}, {"t": "stamp", "v": "doc", "d": 3.4}, {"t": "src", "text": "Fonte: TechCrunch · Neowin · SiliconANGLE", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "E os seus dados?", "d": 0}, {"t": "num", "n": 3.5, "suf": " mi de contas", "pre": "", "dec": 1, "d": 0.2}, {"t": "p", "html": "Google, Apple e Meta entregaram dados ao governo dos EUA por pedidos oficiais, 2014–2025.", "d": 1}, {"t": "stamp", "v": "doc", "d": 2.4}, {"t": "p", "html": "Esses dados vão para a Palantir?", "d": 3.2}, {"t": "stamp", "v": "open", "d": 4}, {"t": "src", "text": "Fonte: Pesquisa da Proton, via The Hill", "d": 0.8}]}, {"dur": 8, "els": [{"t": "emoji", "html": "🎧", "d": 0}, {"t": "k", "text": "E o Spotify?", "d": 0.2}, {"t": "h", "text": "Não é Palantir", "d": 0.4, "cls": "m"}, {"t": "p", "html": "O fundador investiu <b>€ 600 milhões</b> na Helsing, de drones militares. Artistas saíram em protesto.", "d": 1}, {"t": "src", "text": "Fonte: CMU · Rolling Stone Brasil", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "Trump, Vance e Flávio", "d": 0}, {"t": "steps", "d": 0.4, "items": [["1", "Ideias em comum: tecnologia pela segurança dos EUA", "doc"], ["2", "Thiel bancou Vance e o apresentou a Trump", "doc"], ["3", "Ação na eleição brasileira", "no"]]}, {"t": "src", "text": "Fonte: CBS · TechCrunch · Rota Washington", "d": 0.8}]}, {"dur": 10, "els": [{"t": "k", "text": "E no Brasil?", "d": 0}, {"t": "h", "text": "O fundo da educação usou", "d": 0.2, "cls": "s"}, {"t": "p", "html": "O <b>FNDE</b>, no governo Lula, usou a Palantir de 2024 a julho de 2026, via Serpro e Amazon.", "d": 0.9}, {"t": "p", "html": "Presidido por indicada de <b>Camilo Santana (PT)</b>. Quem pediu a ferramenta ainda não é público.", "d": 2.6}, {"t": "stamp", "v": "doc", "d": 3.8}, {"t": "src", "text": "Fonte: Capital Digital · CartaCapital", "d": 0.8}]}, {"dur": 8, "els": [{"t": "k", "text": "Resumo", "d": 0}, {"t": "big", "text": "Contrato é fato. Acusação é acusação.", "d": 0.2}, {"t": "p", "html": "Investigação não é condenação. Todas as fontes em:", "d": 1.6}, {"t": "p", "html": "<b>fcarvalhodev.github.io/rota-palantir</b>", "d": 2.2}]}];
+const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>1-Math.pow(1-clamp(x),3);
+const wrap=document.getElementById('wrap'),host=document.getElementById('scenes'),prog=document.getElementById('prog');
+let starts=[],T=0,acc=0;SC.forEach(s=>{starts.push(acc);acc+=s.dur});const TOTAL=acc;
+const LBL={doc:['Documentado','var(--doc)'],alleg:['Alegação','var(--alleg)'],open:['Em aberto','var(--open)'],no:['Não demonstrado','var(--no)'],ver:['Versão da empresa','var(--gray)']};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+SC.forEach((s,i)=>{
+  prog.insertAdjacentHTML('beforeend','<i><b></b></i>');
+  const d=document.createElement('div');d.className='scene';
+  d.innerHTML=s.els.map((e,j)=>{
+    const a=`class="el ${e.t}${e.cls?' '+e.cls:''}" data-d="${e.d||0}" data-k="${e.anim||(e.t==='stamp'?'stamp':e.t==='emoji'?'pop':'up')}"`;
+    if(e.t==='stamp'){const l=LBL[e.v];return `<div ${a} style="--c:${l[1]}">${esc(e.text||l[0])}</div>`}
+    if(e.t==='num')return `<div ${a} data-n="${e.n}" data-g="${e.g===0?0:1}" data-dec="${e.dec||0}" data-pre="${e.pre||''}"><span>0</span><small>${esc(e.suf||'')}</small></div>`;
+    if(e.t==='bars')return `<div ${a}>`+e.items.map(b=>`<div class="bar"><div class="t">${esc(b[0])}<span>${esc(b[2])}</span></div><div class="tr"><div class="f" data-w="${b[1]}"></div></div></div>`).join('')+'</div>';
+    if(e.t==='chips')return `<div ${a}>`+e.items.map(c=>`<span class="chip">${esc(c)}</span>`).join('')+'</div>';
+    if(e.t==='steps')return `<div ${a}>`+e.items.map(c=>`<div class="step" style="--c:${LBL[c[2]][1]}"><b>${esc(c[0])}</b><span>${c[1]}<em>${esc(LBL[c[2]][0])}</em></span></div>`).join('')+'</div>';
+    if(e.t==='src')return `<div ${a}>${esc(e.text)}</div>`;
+    return `<div ${a}>${e.html||esc(e.text)}</div>`;
+  }).join('');
+  host.appendChild(d);
+});
+const scenes=[...host.children],segs=[...prog.querySelectorAll('b')];
+const fmt=(v,dec,g)=>v.toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec,useGrouping:g!=='0'});
+function render(t){
+  T=t;
+  scenes.forEach((el,i)=>{
+    const s=starts[i],e=s+SC[i].dur,lt=t-s;
+    const op=clamp(lt/.45)*clamp((e-t)/.45);el.style.opacity=op;el.style.visibility=op>0?'visible':'hidden';
+    segs[i].style.width=(clamp(lt/SC[i].dur)*100)+'%';
+    if(op<=0)return;
+    el.querySelectorAll('.el').forEach(x=>{
+      const p=ease((lt-(+x.dataset.d))/0.7),k=x.dataset.k;
+      if(k==='stamp'){const q=clamp((lt-(+x.dataset.d))/0.35);x.style.opacity=q;x.style.transform=`scale(${1+1.2*(1-q)}) rotate(${-6*(1-q)-2}deg)`}
+      else if(k==='pop'){x.style.opacity=p;x.style.transform=`scale(${.4+.6*p}) rotate(${(1-p)*-20}deg)`}
+      else{x.style.opacity=p;x.style.transform=`translateY(${(1-p)*60}px)`}
+      if(x.classList.contains('num')){const q=ease((lt-(+x.dataset.d))/1.6);x.querySelector('span').textContent=x.dataset.pre+fmt(+x.dataset.n*q,+x.dataset.dec,x.dataset.g)}
+      x.querySelectorAll('.f').forEach((f,j)=>{const q=ease((lt-(+x.dataset.d)-.3-j*.25)/1.2);f.style.width=(+f.dataset.w*q)+'%'});
+    });
+  });
+  document.getElementById('bg').style.transform=`translate(${Math.sin(t/7)*40}px,${Math.cos(t/9)*40}px) scale(1.05)`;
+}
+window.seek=render;window.TOTAL=TOTAL;
+function fit(){const s=Math.min(innerWidth/1080,innerHeight/1920);wrap.style.transform=`scale(${s})`}
+addEventListener('resize',fit);fit();render(0);
+let t0=null,raf=null;
+function loop(now){if(t0===null)t0=now;const t=(now-t0)/1000;render(Math.min(t,TOTAL));if(t<TOTAL)raf=requestAnimationFrame(loop);else document.getElementById('ui').style.display='grid'}
+function play(){document.getElementById('ui').style.display='none';t0=null;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+document.getElementById('play').addEventListener('click',play);
+const q=new URLSearchParams(location.search);
+if(q.has('rec'))document.documentElement.classList.add('rec');
+if(q.has('auto'))setTimeout(play,800);
+</script>
+</body></html>
