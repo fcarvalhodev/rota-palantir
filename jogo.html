@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pedra Vidente</title>
+<meta name="description" content="Palantír é a pedra mágica que vê longe. Use a sua para enxergar o que é fato, o que é acusação e o que é boato sobre a empresa, as big techs e a guerra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/jogos/jogo.css">
+<style>
+:root{--accent:#9f1239;--hero:#5c0b22}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#fda4af;--hero:#5c0b22}}
+:root[data-theme="dark"]{--accent:#fda4af;--hero:#5c0b22}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/">Algoritmo</a><a href="https://fcarvalhodev.github.io/rota-do-posto/">Posto</a><a href="https://fcarvalhodev.github.io/rota-das-queimadas/">Queimadas</a><a href="https://fcarvalhodev.github.io/rota-dos-games/">Games</a><a href="https://fcarvalhodev.github.io/rota-do-contracheque/">Contracheque</a><a href="https://fcarvalhodev.github.io/rota-palantir/" aria-current="page">Palantir</a><a class="rb-lang" href="en/jogo.html" hreflang="en" lang="en">EN</a></div></nav>
+<main class="jg" id="jg" aria-live="polite"><noscript>Este jogo precisa de JavaScript. <a href="index.html">Ler a rota</a>.</noscript></main>
+<script>
+window.JG_DATA={
+ "kicker": "Rota Palantir · jogo",
+ "title": "Pedra Vidente",
+ "host": [
+  "🔮",
+  "Mago da checagem"
+ ],
+ "emo": "👁️",
+ "intro": "Palantír é a pedra mágica que vê longe. Use a sua para enxergar o que é fato, o que é acusação e o que é boato sobre a empresa, as big techs e a guerra.",
+ "rounds": [
+  {
+   "type": "boato",
+   "title": "Visões da pedra",
+   "how": "leia a frase que circula e diga se é Verdade, Meia verdade, Falso ou Sem prova.",
+   "n": 7,
+   "items": [
+    {
+     "c": "A Palantir trabalha para o Exército de Israel na guerra.",
+     "v": "v",
+     "e": "Desde janeiro de 2024, há uma parceria estratégica com o Ministério da Defesa de Israel para “missões ligadas à guerra”, anunciada pela própria empresa.",
+     "s": []
+    },
+    {
+     "c": "A Palantir fez o Lavender, a IA que escolhe alvos em Gaza.",
+     "v": "u",
+     "e": "O Lavender e o Gospel são sistemas do Exército israelense. A relatora da ONU liga a Palantir à escolha de alvos; a empresa nega ter feito ou participar desses dois sistemas. Até agora, ninguém mostrou documento que resolva a dúvida.",
+     "s": []
+    },
+    {
+     "c": "O Spotify vende seus dados para a guerra.",
+     "v": "f",
+     "e": "O que existe é o investimento do fundo de Daniel Ek, fundador do Spotify, na Helsing, empresa alemã de drones e IA militar. Não há registro de dados de usuários do Spotify indo para a Helsing ou para a Palantir.",
+     "s": []
+    },
+    {
+     "c": "O X e o Facebook entregam seus posts para a Palantir.",
+     "v": "u",
+     "e": "Meta e xAI, de Elon Musk, cederam seus modelos de IA, o Llama e o Grok, para uso militar e na plataforma da Palantir. Isso é diferente de entregar posts e fotos dos usuários, e isso não aparece nas fontes.",
+     "s": []
+    },
+    {
+     "c": "As big techs americanas trabalham para militares.",
+     "v": "v",
+     "e": "Microsoft, Google, Amazon, Meta, Anthropic e xAI têm contratos ou parcerias de nuvem e IA com governos e militares, nos EUA e em Israel. A Microsoft cortou parte dos serviços à unidade 8200 de Israel em 2025.",
+     "s": []
+    },
+    {
+     "c": "A Palantir só trabalha para governos de direita.",
+     "v": "f",
+     "e": "Cresceu com contratos de Obama, Biden e Trump. No Brasil, o fundo da educação do governo Lula, comandado por uma indicada do PT, usou os programas dela de 2024 até julho de 2026.",
+     "s": []
+    },
+    {
+     "c": "A Palantir está ajudando a eleger Flávio Bolsonaro.",
+     "v": "u",
+     "e": "Há ideias em comum e uma rede de pessoas, de Thiel a Vance e Trump. Mas nenhuma fonte mostra contrato, dinheiro, dado ou reunião da empresa com qualquer campanha no Brasil.",
+     "s": []
+    },
+    {
+     "c": "A Palantir nasceu com dinheiro da CIA.",
+     "v": "v",
+     "e": "O In-Q-Tel, fundo ligado à CIA, investiu cerca de US$ 2 milhões no começo. A maior parte veio de Peter Thiel.",
+     "s": []
+    }
+   ]
+  }
+ ],
+ "ranks": [
+  [
+   0,
+   "A pedra te enganou, como fez com Saruman."
+  ],
+  [
+   40,
+   "Visão embaçada."
+  ],
+  [
+   65,
+   "Mago cinzento."
+  ],
+  [
+   90,
+   "Mago branco: nada escapa."
+  ]
+ ],
+ "quips": {
+  "ok": [
+   "Isso! Pode publicar.",
+   "Na mosca. A fonte agradece.",
+   "Acertou. O grupo da família vai ter que engolir.",
+   "Boa! Checador raiz."
+  ],
+  "no": [
+   "Errou. Mas pelo menos você não compartilhou.",
+   "Quase. Leia a explicação antes de mandar no zap.",
+   "Não foi dessa vez. Acontece até com jornalista.",
+   "Ops. A tia do zap venceu essa."
+  ]
+ },
+ "full": "index.html",
+ "updated": "Rotas · Rota Palantir"
+};
+</script>
+<script src="https://fcarvalhodev.github.io/rotas/jogos/jogo.js"></script>
+</body></html>
