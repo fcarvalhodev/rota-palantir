@@ -140,7 +140,7 @@ const $=id=>document.getElementById(id);
 function factLi(f,withYear){
  const li=document.createElement("li");li.style.setProperty("--c","var(--"+f.ev+")");
  const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
- const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ const b=document.createElement("b");b.textContent=" "+f.t+(/[?!.…]$/.test(f.t)?" ":". ");
  if(withYear&&f.y){const y=document.createElement("span");y.className="yr";y.textContent=f.y;li.append(y)}
  li.append(tg,b,document.createTextNode(f.b+" "));
  if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Fonte: "+f.src[0];sm.append(a);li.append(sm)}
@@ -159,7 +159,7 @@ function key(a,b){return [a,b].sort().join("|")}
 function line(a,b,cls){const l=document.createElementNS(NS,"line");l.setAttribute("x1",N[a].x);l.setAttribute("y1",N[a].y);l.setAttribute("x2",N[b].x);l.setAttribute("y2",N[b].y);l.setAttribute("class","str "+cls);svg.append(l);return l}
 function card(f,fresh){const c=$("card");c.style.borderLeftColor="var(--"+f.ev+")";c.textContent="";
  const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
- const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ const b=document.createElement("b");b.textContent=" "+f.t+(/[?!.…]$/.test(f.t)?" ":". ");
  c.append(tg,b,document.createTextNode(f.b));
  if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Fonte: "+f.src[0];sm.append(a);c.append(sm)}
  if(fresh)$("log").prepend(factLi(f,false))}
