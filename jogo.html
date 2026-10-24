@@ -1,128 +1,199 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pedra Vidente</title>
-<meta name="description" content="Palantír é a pedra mágica que vê longe. Use a sua para enxergar o que é fato, o que é acusação e o que é boato sobre a empresa, as big techs e a guerra.">
+<title>Quadro do Detetive</title>
+<meta name="description" content="Jogo da Rota Palantir: ligue os alfinetes com barbante vermelho. Ligação com prova aguenta; ligação sem prova arrebenta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/jogos/jogo.css">
+<style>
+:root{
+  --bg:#f3f1ea; --paper:#fbfaf6; --ink:#1c1b1f; --muted:#5b5a63; --line:#d9d5ca; --soft:#ebe7dc;
+  --doc:#1f6b45; --doc-soft:#dcefe3; --open:#5b4bb0; --open-soft:#e7e3f6; --alleg:#a3501a; --alleg-soft:#f8e6d7; --no:#a12a2a; --no-soft:#f6dede;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121216; --paper:#1a1a20; --ink:#ecebf0; --muted:#a3a2ad; --line:#2e2d36; --soft:#24232b;
+  --doc:#6fd39c; --doc-soft:#173326; --open:#ab9ff0; --open-soft:#29254a; --alleg:#f0a066; --alleg-soft:#3a2516; --no:#f19b9b; --no-soft:#3a1c1c;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121216; --paper:#1a1a20; --ink:#ecebf0; --muted:#a3a2ad; --line:#2e2d36; --soft:#24232b;
+  --doc:#6fd39c; --doc-soft:#173326; --open:#ab9ff0; --open-soft:#29254a; --alleg:#f0a066; --alleg-soft:#3a2516; --no:#f19b9b; --no-soft:#3a1c1c;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px}
+header.g{padding-block:26px 8px;display:grid;gap:10px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{margin:0;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(52px,13vw,104px);line-height:.86;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(30px,6.5vw,44px);line-height:.95;text-transform:uppercase;margin:0 0 10px}
+h3{font-family:var(--ui);font-size:19px;line-height:1.25;margin:0 0 6px}
+.lede{margin:0;max-width:64ch;font-size:18px}
+.how{margin:0;font-family:var(--ui);font-size:15px;color:var(--muted)}
+.btn{font-family:var(--ui);font-weight:800;font-size:17px;border:0;border-radius:999px;padding:12px 20px;background:var(--accent);color:var(--paper);cursor:pointer;min-height:48px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tg{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;white-space:nowrap;vertical-align:2px}
+.tg.doc{background:var(--doc-soft);color:var(--doc);border:1px solid var(--doc)}
+.tg.open{background:var(--open-soft);color:var(--open);border:1px dashed var(--open)}
+.tg.alleg{background:var(--alleg-soft);color:var(--alleg);border:1px solid var(--alleg)}
+.tg.no{background:var(--no-soft);color:var(--no);border:1px solid var(--no)}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--c,var(--line));border-radius:8px;padding:12px 14px}
+.facts li b{font-family:var(--ui)}
+.facts li small{display:block;margin-top:4px;font-family:var(--ui);font-size:13px;color:var(--muted)}
+.facts li small a{color:var(--muted)}
+.facts .yr{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:6px}
+section.blk{margin-block:26px}
+.note{font-family:var(--ui);font-size:14px;color:var(--muted)}
+.end{border:2px solid var(--accent);border-radius:12px;background:var(--paper);padding:18px;display:grid;gap:12px}
+footer.g{margin-block:36px 28px;font-family:var(--ui);font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 <style>
 :root{--accent:#9f1239;--hero:#5c0b22}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#fda4af;--hero:#5c0b22}}
 :root[data-theme="dark"]{--accent:#fda4af;--hero:#5c0b22}
-.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+
+</style>
+<style>
+.game{display:grid;gap:12px;margin-top:8px}
+.hud{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-family:var(--ui)}
+.hud b{font-family:var(--display);font-stretch:70%;font-weight:900;font-size:32px;line-height:1;color:var(--accent)}
+.hud span{font-size:14px;color:var(--muted)}
+.board{position:relative;width:100%;max-width:620px;margin-inline:auto;aspect-ratio:100/140;border-radius:12px;border:10px solid #8a5a2b;box-shadow:inset 0 0 0 2px rgba(0,0,0,.15);
+ background-color:#c79a5e;background-image:radial-gradient(rgba(90,50,10,.22) 1px,transparent 1.5px),radial-gradient(rgba(255,240,210,.18) 1px,transparent 1.5px);background-size:9px 9px,13px 13px;background-position:0 0,4px 6px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .board{background-color:#7a5a35;border-color:#4a3218}}
+:root[data-theme="dark"] .board{background-color:#7a5a35;border-color:#4a3218}
+.board svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.str{stroke:#c0141c;stroke-width:3.2;stroke-linecap:round;vector-effect:non-scaling-stroke;fill:none;filter:drop-shadow(0 1px 0 rgba(0,0,0,.35))}
+.str.alleg{stroke-dasharray:9 6}
+.str.live{stroke-dasharray:6 6;opacity:.7}
+.str.snap{animation:snap .9s ease forwards}
+@keyframes snap{0%{opacity:1}40%{opacity:1;stroke-dasharray:40 10}100%{opacity:0;stroke-dasharray:2 30}}
+.str.gag{stroke-width:1.4;opacity:.75}
+.pin{position:absolute;transform:translate(-50%,-50%);width:23%;min-height:56px;padding:12px 4px 6px;border:0;border-radius:4px;background:#fffdf4;color:#1c1b1f;
+ box-shadow:0 3px 6px rgba(0,0,0,.35);font-family:var(--ui);font-weight:700;font-size:clamp(11px,2.9vw,14px);line-height:1.15;cursor:pointer;display:grid;justify-items:center;gap:2px;text-align:center}
+.pin::before{content:"";position:absolute;top:-6px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff6b6b,#a10f17);box-shadow:0 2px 2px rgba(0,0,0,.4)}
+.pin .e{font-size:clamp(18px,5vw,26px);line-height:1}
+.pin.big{width:28%;background:#fff3c4;font-size:clamp(13px,3.4vw,17px)}
+.pin:nth-child(odd){rotate:-2deg}.pin:nth-child(3n){rotate:2deg}
+.pin.sel{outline:4px solid #c0141c;outline-offset:2px;scale:1.06}
+.pin.hint{animation:hint 1s ease 3}
+@keyframes hint{50%{box-shadow:0 0 0 8px rgba(255,215,0,.85)}}
+.card{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--line);border-radius:10px;padding:12px 14px;font-family:var(--ui);font-size:15px;line-height:1.45;min-height:84px}
+.card b{font-size:16px}
+.card small{display:block;margin-top:4px;color:var(--muted);font-size:13px}
+.zap{display:flex;gap:10px;align-items:flex-start;font-family:var(--ui);font-size:15px}
+.zap .av{font-size:28px;line-height:1}
+.zap p{margin:0;background:var(--soft);border-radius:12px 12px 12px 2px;padding:8px 12px}
+.end h2{margin:0}
 </style>
 </head><body>
 <style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/">Algoritmo</a><a href="https://fcarvalhodev.github.io/rota-do-posto/">Posto</a><a href="https://fcarvalhodev.github.io/rota-das-queimadas/">Queimadas</a><a href="https://fcarvalhodev.github.io/rota-dos-games/">Games</a><a href="https://fcarvalhodev.github.io/rota-do-contracheque/">Contracheque</a><a href="https://fcarvalhodev.github.io/rota-palantir/" aria-current="page">Palantir</a><a class="rb-lang" href="en/jogo.html" hreflang="en" lang="en">EN</a></div></nav>
-<main class="jg" id="jg" aria-live="polite"><noscript>Este jogo precisa de JavaScript. <a href="index.html">Ler a rota</a>.</noscript></main>
+<main class="wrap">
+<header class="g">
+  <span class="kicker">Rota Palantir · jogo</span>
+  <h1>Quadro do Detetive</h1>
+  <p class="lede">Todo grupo de família tem um detetive que liga tudo com tudo. Agora é a sua vez de montar o quadro, mas aqui o barbante só aguenta se tiver fonte.</p>
+  <p class="how">Como jogar: toque em um alfinete e depois em outro. Barbante contínuo é ligação documentada; tracejado é acusação; o que arrebenta não tem prova. Ache as 12 ligações.</p>
+</header>
+
+<div class="game">
+  <div class="zap"><span class="av" aria-hidden="true">🧓</span><p id="zap"><b>Tio do grupo:</b> “Tá tudo ligado! A Palantir, a CIA, o Spotify, o Flávio, tudo!” Será? Ligue os alfinetes e veja quais barbantes aguentam.</p></div>
+  <div class="hud" aria-live="polite"><b id="ok">0</b><span id="okT">de 12 ligações com prova</span><b id="br">0</b><span>barbantes arrebentados</span></div>
+  <div class="board" id="board" role="group" aria-label="Quadro do detetive: toque em dois alfinetes para ligá-los com barbante">
+    <svg viewBox="0 0 100 140" preserveAspectRatio="none" id="svg" aria-hidden="true"></svg>
+  </div>
+  <div class="card" id="card" aria-live="polite">Toque em um alfinete e depois em outro para esticar o barbante entre eles.</div>
+  <div class="row"><button class="btn ghost" type="button" id="hintB">💡 Dica</button><button class="btn ghost" type="button" id="allB">Desisto, mostre o quadro</button></div>
+</div>
+<section class="blk end" id="end" hidden aria-live="polite">
+  <h2>Quadro montado</h2>
+  <p>Duas ligações valem ouro. Primeiro: <b>seus posts → IA da Meta e do X → Palantir</b>. É um caminho indireto e documentado; venda direta dos seus dados não aparece em nenhuma fonte. Segundo: <b>Thiel → Vance → Flávio</b>. É uma rede de pessoas e interesses; ação da Palantir na eleição não está demonstrada.</p>
+  <p>E a Palantir não tem um banco de dados próprio sobre você: ela vende o programa, e <b>quem contrata coloca os dados</b>.</p>
+  <div class="row"><button class="btn" type="button" id="gagB">🤪 Agora ligue tudo com tudo, do jeito do grupo</button></div>
+  <p class="note" id="gagT" hidden></p>
+  <div class="row"><button class="btn ghost" type="button" id="again">Jogar de novo</button><a class="btn ghost" href="index.html">Ler a Rota Palantir</a></div>
+</section>
+<section class="blk">
+  <h2>Caderno do detetive</h2>
+  <ul class="facts" id="log"></ul>
+</section>
+
+<footer class="g">
+  <p>Fatos até 22 de outubro de 2026. Investigação não é condenação. Cada fato do jogo tem fonte; os selos seguem a <a href="https://fcarvalhodev.github.io/rotas/metodologia.html">metodologia das Rotas</a>.</p>
+  <p class="row"><a class="btn ghost" href="index.html">Ler a rota completa</a><a class="btn ghost" href="quiz.html">Fazer o quiz da rota</a></p>
+</footer>
+</main>
 <script>
-window.JG_DATA={
- "kicker": "Rota Palantir · jogo",
- "title": "Pedra Vidente",
- "host": [
-  "🔮",
-  "Mago da checagem"
- ],
- "emo": "👁️",
- "intro": "Palantír é a pedra mágica que vê longe. Use a sua para enxergar o que é fato, o que é acusação e o que é boato sobre a empresa, as big techs e a guerra.",
- "rounds": [
-  {
-   "type": "boato",
-   "title": "Visões da pedra",
-   "how": "leia a frase que circula e diga se é Verdade, Meia verdade, Falso ou Sem prova.",
-   "n": 7,
-   "items": [
-    {
-     "c": "A Palantir trabalha para o Exército de Israel na guerra.",
-     "v": "v",
-     "e": "Desde janeiro de 2024, há uma parceria estratégica com o Ministério da Defesa de Israel para “missões ligadas à guerra”, anunciada pela própria empresa.",
-     "s": []
-    },
-    {
-     "c": "A Palantir fez o Lavender, a IA que escolhe alvos em Gaza.",
-     "v": "u",
-     "e": "O Lavender e o Gospel são sistemas do Exército israelense. A relatora da ONU liga a Palantir à escolha de alvos; a empresa nega ter feito ou participar desses dois sistemas. Até agora, ninguém mostrou documento que resolva a dúvida.",
-     "s": []
-    },
-    {
-     "c": "O Spotify vende seus dados para a guerra.",
-     "v": "f",
-     "e": "O que existe é o investimento do fundo de Daniel Ek, fundador do Spotify, na Helsing, empresa alemã de drones e IA militar. Não há registro de dados de usuários do Spotify indo para a Helsing ou para a Palantir.",
-     "s": []
-    },
-    {
-     "c": "O X e o Facebook entregam seus posts para a Palantir.",
-     "v": "m",
-     "e": "Não entregam os posts. Mas a Meta treinou o Llama com posts públicos do Facebook e do Instagram, e o X treina o Grok com os posts dos usuários, e essas duas IAs foram cedidas para uso militar e para a plataforma da Palantir. A IA não traz o seu perfil, mas carrega o que aprendeu com ele.",
-     "s": []
-    },
-    {
-     "c": "Seus dados das redes acabam nas mãos do governo americano.",
-     "v": "m",
-     "e": "Google, Apple e Meta entregaram dados de milhões de contas às autoridades dos EUA por pedidos oficiais, e o governo também compra localização de celulares de intermediários. Mas isso depende de pedido ou de compra, não é tudo de todo mundo, e não está provado que esses dados entrem nos sistemas da Palantir.",
-     "s": []
-    },
-    {
-     "c": "As big techs americanas trabalham para militares.",
-     "v": "v",
-     "e": "Microsoft, Google, Amazon, Meta, Anthropic e xAI têm contratos ou parcerias de nuvem e IA com governos e militares, nos EUA e em Israel. A Microsoft cortou parte dos serviços à unidade 8200 de Israel em 2025.",
-     "s": []
-    },
-    {
-     "c": "A Palantir só trabalha para governos de direita.",
-     "v": "f",
-     "e": "Cresceu com contratos de Obama, Biden e Trump. No Brasil, o fundo da educação do governo Lula, comandado por uma indicada do PT, usou os programas dela de 2024 até julho de 2026.",
-     "s": []
-    },
-    {
-     "c": "A Palantir está ajudando a eleger Flávio Bolsonaro.",
-     "v": "u",
-     "e": "Há ideias em comum e uma rede de pessoas, de Thiel a Vance e Trump. Mas nenhuma fonte mostra contrato, dinheiro, dado ou reunião da empresa com qualquer campanha no Brasil.",
-     "s": []
-    },
-    {
-     "c": "A Palantir nasceu com dinheiro da CIA.",
-     "v": "v",
-     "e": "O In-Q-Tel, fundo ligado à CIA, investiu cerca de US$ 2 milhões no começo. A maior parte veio de Peter Thiel.",
-     "s": []
-    }
-   ]
-  }
- ],
- "ranks": [
-  [
-   0,
-   "A pedra te enganou, como fez com Saruman."
-  ],
-  [
-   40,
-   "Visão embaçada."
-  ],
-  [
-   65,
-   "Mago cinzento."
-  ],
-  [
-   90,
-   "Mago branco: nada escapa."
-  ]
- ],
- "quips": {
-  "ok": [
-   "Isso! Pode publicar.",
-   "Na mosca. A fonte agradece.",
-   "Acertou. O grupo da família vai ter que engolir.",
-   "Boa! Checador raiz."
-  ],
-  "no": [
-   "Errou. Mas pelo menos você não compartilhou.",
-   "Quase. Leia a explicação antes de mandar no zap.",
-   "Não foi dessa vez. Acontece até com jornalista.",
-   "Ops. A tia do zap venceu essa."
-  ]
- },
- "full": "index.html",
- "updated": "Rotas · Rota Palantir"
-};
+
+const LBL={doc:"Documentado",open:"Em aberto",alleg:"Alegação",no:"Não demonstrado"};
+const $=id=>document.getElementById(id);
+function factLi(f,withYear){
+ const li=document.createElement("li");li.style.setProperty("--c","var(--"+f.ev+")");
+ const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
+ const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ if(withYear&&f.y){const y=document.createElement("span");y.className="yr";y.textContent=f.y;li.append(y)}
+ li.append(tg,b,document.createTextNode(f.b+" "));
+ if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Fonte: "+f.src[0];sm.append(a);li.append(sm)}
+ return li;
+}
+const NODES=[{"id": "thiel", "e": "💼", "n": "Peter Thiel", "x": 50, "y": 7}, {"id": "cia", "e": "🕵️", "n": "Fundo da CIA", "x": 15, "y": 14}, {"id": "vance", "e": "🦅", "n": "J.D. Vance", "x": 85, "y": 14}, {"id": "army", "e": "🪖", "n": "Exército dos EUA", "x": 15, "y": 38}, {"id": "pal", "e": "🔮", "n": "Palantir", "x": 50, "y": 44, "big": 1}, {"id": "flavio", "e": "🗳️", "n": "Flávio Bolsonaro", "x": 85, "y": 38}, {"id": "ice", "e": "🛂", "n": "ICE, a polícia de imigração", "x": 15, "y": 63}, {"id": "anth", "e": "🤖", "n": "Anthropic (Claude)", "x": 50, "y": 72}, {"id": "ai", "e": "🧠", "n": "IAs da Meta e do X", "x": 85, "y": 63}, {"id": "israel", "e": "🛡️", "n": "Defesa de Israel", "x": 15, "y": 89}, {"id": "spotify", "e": "🎧", "n": "Spotify", "x": 50, "y": 99}, {"id": "posts", "e": "📱", "n": "Seus posts", "x": 85, "y": 89}, {"id": "gaza", "e": "🎯", "n": "Alvos em Gaza", "x": 22, "y": 124}, {"id": "fnde", "e": "🏫", "n": "FNDE, do MEC (governo Lula)", "x": 78, "y": 124}];
+const EDGES={"cia|pal": {"ev": "doc", "t": "Dinheiro inicial da CIA", "b": "O In-Q-Tel, fundo de investimento ligado à CIA, pôs cerca de US$ 2 milhões na Palantir no começo.", "src": ["Wikipédia: Palantir", "https://en.wikipedia.org/wiki/Palantir"]}, "pal|thiel": {"ev": "doc", "t": "O fundador", "b": "Peter Thiel, que criou o PayPal, fundou a Palantir com Alex Karp e outros sócios e bancou a maior parte dos primeiros US$ 30 milhões.", "src": ["Wikipédia: Palantir", "https://en.wikipedia.org/wiki/Palantir"]}, "thiel|vance": {"ev": "doc", "t": "O padrinho", "b": "Thiel contratou J.D. Vance para o fundo dele, apresentou Vance a Trump em 2021 e deu US$ 15 milhões para a campanha dele ao Senado em 2022.", "src": ["CBS: Thiel e Vance", "https://www.cbsnews.com/news/jd-vance-trump-vp-peter-thiel-billionaire/"]}, "flavio|vance": {"ev": "doc", "t": "Reunião na Casa Branca", "b": "Em maio de 2026, Flávio se reuniu com Trump, Rubio e Vance, hoje vice-presidente.", "src": ["Correio da Manhã: Casa Branca", "https://www.correiodamanha.com.br/politica/2026/05/289342-flavio-bolsonaro-volta-a-debater-cv-e-pcc-em-reuniao-com-marco-rubio.html"]}, "army|pal": {"ev": "doc", "t": "Até US$ 10 bilhões", "b": "Em julho de 2025, o Exército dos EUA juntou 75 contratos da Palantir num só, de até US$ 10 bilhões em 10 anos. Ela também toca o Projeto Maven, que usa IA em imagens de drones.", "src": ["The Register: Exército", "https://www.theregister.com/2025/08/01/palantir_us_army_contract/"]}, "ice|pal": {"ev": "doc", "t": "Quem deportar primeiro", "b": "A Palantir trabalha com o ICE desde 2013. Teve contrato com Obama, em 2014, e com Trump, em 2025, para o sistema que escolhe quem deportar primeiro.", "src": ["American Immigration Council", "https://www.americanimmigrationcouncil.org/blog/ice-immigrationos-palantir-ai-track-immigrants/"]}, "israel|pal": {"ev": "doc", "t": "Parceria para “missões ligadas à guerra”", "b": "Em janeiro de 2024, a Palantir fechou uma parceria estratégica com o Ministério da Defesa de Israel. O que ela fornece não foi divulgado.", "src": ["Bloomberg", "https://www.bnnbloomberg.ca/thiel-s-palantir-israel-agree-strategic-partnership-for-battle-tech-1.2021218"]}, "gaza|pal": {"ev": "alleg", "t": "Acusação da ONU", "b": "A relatora da ONU para os territórios palestinos diz que há motivos para crer que a tecnologia da Palantir ajuda a escolher alvos. A Palantir chama a acusação de “totalmente falsa” e diz que não fez o Lavender nem o Gospel, os sistemas de alvos de Israel.", "src": ["Palantir: resposta à ONU", "https://www.palantir.com/assets/xrfr7uokpv1b/1aXqmYRvd1KY5SErhxQQyo/59efaf38eb9c2494752f0131dce714a0/Palantir_Response_to_UN_SRHRP_Letter_-_22_May_2025.pdf"]}, "ai|pal": {"ev": "doc", "t": "IA que vai para militares", "b": "O Llama, da Meta, foi liberado para a defesa dos EUA, com a Palantir entre as parceiras. O Grok, do X, entrou na plataforma da Palantir em 2025.", "src": ["Neowin: Llama para o governo", "https://www.neowin.net/news/metas-llama-models-now-available-to-us-government-agencies/"]}, "ai|posts": {"ev": "doc", "t": "Seus posts treinaram a IA", "b": "A Meta treinou o Llama com posts públicos do Facebook e do Instagram, inclusive de brasileiros. O X usa por padrão os posts para treinar o Grok. A IA não leva o seu perfil, mas leva o que aprendeu com milhões de perfis.", "src": ["TNH1: a Meta e os dados de brasileiros", "https://www.tnh1.com.br/noticia/nid/meta-pode-treinar-ia-com-dados-brasileiros-usuario-podera-negar/"]}, "anth|pal": {"ev": "doc", "t": "A IA que escreve as Rotas também", "b": "Em novembro de 2024, a Anthropic fez parceria com a Palantir e a Amazon para oferecer o Claude a agências de defesa e inteligência dos EUA. As Rotas são feitas com a ajuda do Claude; por isso o critério é o mesmo.", "src": ["SiliconANGLE", "https://siliconangle.com/2024/11/07/anthropic-partners-aws-palantir-provide-ai-models-defense-agencies/"]}, "fnde|pal": {"ev": "doc", "t": "A Palantir no MEC", "b": "O FNDE usou programas da Palantir de março de 2024 a julho de 2026, comprados pela loja da Amazon dentro de um contrato de nuvem com o Serpro. Diz que só usou dados públicos. Não há registro de que Lula tenha decidido o uso.", "src": ["Capital Digital", "https://capitaldigital.com.br/fnde-descontinua-palantir-apos-polemico-contrato-de-r-216-milhoes-com-serpro-e-aws/"]}};
+const MYTHS={"flavio|pal": {"ev": "no", "t": "Palantir na campanha de Flávio?", "b": "Nenhuma fonte mostra contrato, dinheiro, dado ou reunião da Palantir com a campanha de Flávio, nem com a de Lula. O caminho Thiel → Vance → Flávio mostra interesses parecidos, não ação na eleição.", "src": ["Rota Palantir", "https://fcarvalhodev.github.io/rota-palantir/"]}, "pal|posts": {"ev": "no", "t": "A Palantir compra seus posts?", "b": "Nenhuma fonte mostra Meta, Google ou Apple vendendo dados direto à Palantir. O caminho é indireto: seus posts treinam a IA, e a IA vai para a Palantir. Ache esse caminho de dois barbantes.", "src": ["Rota Palantir", "https://fcarvalhodev.github.io/rota-palantir/"]}, "pal|spotify": {"ev": "no", "t": "Spotify e Palantir?", "b": "Não tem ligação. O que existe é outra coisa: o fundo de Daniel Ek, fundador do Spotify, investiu € 600 milhões na Helsing, empresa alemã de drones militares. Artistas saíram do Spotify em protesto.", "src": ["CMU", "https://completemusicupdate.com/increasing-number-of-artists-join-spotify-boycott-over-ceos-ai-weapon-investments/"]}};
+
+const board=$("board"),svg=$("svg"),NS="http://www.w3.org/2000/svg";
+const N={};NODES.forEach(n=>N[n.id]=n);
+const TOTAL=Object.keys(EDGES).length;
+let sel=null,found=new Set(),myths=new Set(),snaps=0,done=false;
+const ZAP=["“Viu? Eu falei que tava tudo ligado!”","“Isso aí! Manda no grupo!”","“Ih, arrebentou… mas no zap ninguém vai ver.”","“Mentira dos jornalistas! Arrebentou porque cortaram!”","“Tá, mas e se…”"];
+function key(a,b){return [a,b].sort().join("|")}
+function line(a,b,cls){const l=document.createElementNS(NS,"line");l.setAttribute("x1",N[a].x);l.setAttribute("y1",N[a].y);l.setAttribute("x2",N[b].x);l.setAttribute("y2",N[b].y);l.setAttribute("class","str "+cls);svg.append(l);return l}
+function card(f,fresh){const c=$("card");c.style.borderLeftColor="var(--"+f.ev+")";c.textContent="";
+ const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
+ const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ c.append(tg,b,document.createTextNode(f.b));
+ if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Fonte: "+f.src[0];sm.append(a);c.append(sm)}
+ if(fresh)$("log").prepend(factLi(f,false))}
+function hud(){$("ok").textContent=found.size;$("br").textContent=snaps}
+function zap(i){$("zap").innerHTML="";const b=document.createElement("b");b.textContent="Tio do grupo: ";$("zap").append(b,document.createTextNode(ZAP[i]))}
+function connect(a,b){const k=key(a,b);
+ if(EDGES[k]){const f=EDGES[k];if(!found.has(k)){found.add(k);line(a,b,f.ev==="doc"?"":"alleg");card(f,true);zap(0)}else card(f,false);hud();if(found.size===TOTAL)finish();return}
+ snaps++;hud();const l=line(a,b,"snap");setTimeout(()=>l.remove(),950);
+ if(MYTHS[k]){const f=MYTHS[k];card(f,!myths.has(k));myths.add(k);zap(3)}
+ else{const c=$("card");c.style.borderLeftColor="var(--no)";c.textContent="";const tg=document.createElement("span");tg.className="tg no";tg.textContent=LBL.no;
+  c.append(tg,document.createTextNode(" Arrebentou: "+N[a].n+" e "+N[b].n+" não têm ligação direta nas fontes da rota. Pode haver caminho por outro alfinete."));zap(2)}}
+function tap(id){if(done&&false)return;const el=board.querySelector('[data-id="'+id+'"]');
+ if(!sel){sel=id;el.classList.add("sel");return}
+ if(sel===id){el.classList.remove("sel");sel=null;return}
+ board.querySelector('[data-id="'+sel+'"]').classList.remove("sel");const a=sel;sel=null;connect(a,id)}
+function build(){NODES.forEach(n=>{const b=document.createElement("button");b.type="button";b.className="pin"+(n.big?" big":"");b.dataset.id=n.id;
+ b.style.left=n.x+"%";b.style.top=(n.y/140*100)+"%";
+ const e=document.createElement("span");e.className="e";e.textContent=n.e;e.setAttribute("aria-hidden","true");
+ const t=document.createElement("span");t.textContent=n.n;b.append(e,t);b.addEventListener("click",()=>tap(n.id));board.append(b)})}
+function finish(){done=true;$("end").hidden=false;setTimeout(()=>$("end").scrollIntoView({behavior:"smooth",block:"start"}),600)}
+$("hintB").addEventListener("click",()=>{const left=Object.keys(EDGES).filter(k=>!found.has(k));if(!left.length)return;
+ const k=left[Math.floor(Math.random()*left.length)];const id=k.split("|").find(x=>x!=="pal")||"pal";
+ const el=board.querySelector('[data-id="'+id+'"]');el.classList.remove("hint");void el.offsetWidth;el.classList.add("hint");
+ $("card").style.borderLeftColor="var(--line)";$("card").textContent="Dica: o alfinete que piscou ainda tem um barbante com prova esperando.";});
+$("allB").addEventListener("click",()=>{Object.keys(EDGES).forEach(k=>{if(!found.has(k)){const [a,b]=k.split("|");found.add(k);const f=EDGES[k];line(a,b,f.ev==="doc"?"":"alleg");$("log").prepend(factLi(f,false))}});
+ Object.keys(MYTHS).forEach(k=>{if(!myths.has(k)){myths.add(k);$("log").prepend(factLi(MYTHS[k],false))}});hud();finish()});
+$("gagB").addEventListener("click",()=>{const ids=NODES.map(n=>n.id);let total=0,i=0;const pairs=[];
+ for(let x=0;x<ids.length;x++)for(let y=x+1;y<ids.length;y++)pairs.push([ids[x],ids[y]]);
+ total=pairs.length;board.scrollIntoView({behavior:"smooth",block:"center"});
+ pairs.forEach(([a,b],j)=>{if(EDGES[key(a,b)])return;setTimeout(()=>{const l=line(a,b,"gag");setTimeout(()=>{l.classList.add("snap")},700+Math.random()*500);setTimeout(()=>l.remove(),1800)},j*12)});
+ setTimeout(()=>{const g=$("gagT");g.hidden=false;g.textContent="O tio esticou "+total+" barbantes. Só "+TOTAL+" têm prova. O resto é o que circula no grupo.";zap(1)},pairs.length*12+1900)});
+$("again").addEventListener("click",()=>{svg.textContent="";found.clear();myths.clear();snaps=0;done=false;$("log").textContent="";$("end").hidden=true;$("gagT").hidden=true;hud();zap(4);
+ $("card").style.borderLeftColor="var(--line)";$("card").textContent="Toque em um alfinete e depois em outro para esticar o barbante entre eles.";board.scrollIntoView({behavior:"smooth",block:"center"})});
+build();hud();
+
 </script>
-<script src="https://fcarvalhodev.github.io/rotas/jogos/jogo.js"></script>
 </body></html>
